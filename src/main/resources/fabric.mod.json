@@ -1,35 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "ultralightfabric",
   "version": "${version}",
-  "name": "The name of the mod",
-  "description": "Describe your mod here",
+  "name": "Ultralight Fabric",
+  "description": "An Ultralight implementation for Fabric",
   "authors": [
-    "Your name"
+    "isXander",
+    "CCBlueX"
   ],
   "contact": {
-    "homepage": "https://example.com",
-    "issues": "https://github.com/example/example/issues",
-    "sources": "https://github.com/example/example"
+    "homepage": "https://isxander.dev",
+    "issues": "https://github.com/isXander/UltralightFabric/issues",
+    "sources": "https://github.com/isXander/UltralightFabric"
   },
-  "license": "The Unlicense",
-  "icon": "assets/modid/icon.png",
-  "environment": "*",
+  "license": "GPL 3.0",
+  "environment": "client",
   "entrypoints": {
-    "main": [
-      {
-        "adapter": "kotlin",
-        "value": "com.author.modid.ModName"
-      }
-    ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
   "depends": {
     "fabric": "*",
     "fabricloader": ">=0.12.0",
-    "fabric-language-kotlin": ">=1.7.0+kotlin.1.6.0",
+    "fabric-language-kotlin": ">=1.7.1+kotlin.1.6.10",
     "minecraft": "1.18.x",
     "java": ">=17"
   }

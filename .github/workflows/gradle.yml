@@ -6,7 +6,7 @@ on:
       - '*'
     paths-ignore:
       - 'README.md'
-      - 'LICENSE.md'
+      - 'LICENSE .md'
       - '.gitignore'
       - '.gitattributes'
   pull_request:
@@ -14,7 +14,7 @@ on:
       - '*'
     paths-ignore:
       - 'README.md'
-      - 'LICENSE'
+      - 'LICENSE.md'
       - '.gitignore'
       - '.gitattributes'
   workflow_dispatch:

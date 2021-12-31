@@ -5,11 +5,17 @@ plugins {
     id("fabric-loom") version "0.10.+"
 }
 
-group = "com.example"
+group = "dev.isxander"
 version = "1.0"
 
 repositories {
     mavenCentral()
+    maven(url = "https://maven.pkg.jetbrains.space/public/p/ktor/eap")
+}
+
+fun DependencyHandlerScope.includeImplementation(dependency: Any) {
+    include(dependency)
+    implementation(dependency)
 }
 
 dependencies {
@@ -27,6 +33,13 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:$loaderVersion")
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion+kotlin.$kotlinVersion")
+
+    includeImplementation("com.labymedia:ultralight-java-base:0.4.12")
+    includeImplementation("com.labymedia:ultralight-java-databind:0.4.12")
+    includeImplementation("com.labymedia:ultralight-java-gpu:0.4.12")
+
+    includeImplementation("io.ktor:ktor-client-core:2.0-eap-289")
+    includeImplementation("io.ktor:ktor-client-apache:2.0-eap-289")
 }
 
 kotlin {
