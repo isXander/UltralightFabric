@@ -17,6 +17,9 @@
   "environment": "client",
   "entrypoints": {
   },
+  "mixins": [
+    "ultralightfabric.mixins.json"
+  ],
   "depends": {
     "fabric": "*",
     "fabricloader": ">=0.12.0",

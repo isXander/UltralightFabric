@@ -34,9 +34,9 @@ dependencies {
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabricVersion")
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion+kotlin.$kotlinVersion")
 
-    includeImplementation("com.labymedia:ultralight-java-base:0.4.12")
-    includeImplementation("com.labymedia:ultralight-java-databind:0.4.12")
-    includeImplementation("com.labymedia:ultralight-java-gpu:0.4.12")
+    includeImplementation("com.labymedia:ultralight-java-base:0.4.6")
+    includeImplementation("com.labymedia:ultralight-java-databind:0.4.6")
+    includeImplementation("com.labymedia:ultralight-java-gpu:0.4.6")
 
     includeImplementation("io.ktor:ktor-client-core:2.0-eap-289")
     includeImplementation("io.ktor:ktor-client-apache:2.0-eap-289")

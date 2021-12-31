@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <style>
+            button {
+                font-size: 80px;
+                text-align: center;
+                font-family: Arial, sans-serif;
+
+                transition-duration: .3s;
+            }
+
+            p:hover {
+                transform: scale(1.5);
+            }
+        </style>
+    </head>
+    <body>
+        <button id="surprise-button" onclick="surprise()">Click for Surprise</button>
+
+        <script>
+            function surprise() {
+                document.getElementById("surprise-button").style.color = 'blue'
+                console.log(minecraft.fpsDebugString)
+            }
+        </script>
+    </body>
+</html>

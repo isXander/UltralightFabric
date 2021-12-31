@@ -12,15 +12,21 @@ import com.labymedia.ultralight.config.UltralightViewConfig
 import com.labymedia.ultralight.input.UltralightKeyEvent
 import com.labymedia.ultralight.input.UltralightMouseEvent
 import com.labymedia.ultralight.input.UltralightScrollEvent
+import dev.isxander.evergreenhud.event.eventBus
 import dev.isxander.ultralightfabric.utils.ThreadLock
 import dev.isxander.ultralightfabric.utils.longedSize
-import dev.isxander.utils.logger
-import dev.isxander.utils.mc
+import dev.isxander.evergreenhud.utils.logger
+import dev.isxander.evergreenhud.utils.mc
+import dev.isxander.ultralightfabric.js.UltralightJsContext
+import dev.isxander.ultralightfabric.js.bindings.EventListenerJs
+import dev.isxander.ultralightfabric.listeners.ViewListener
+import dev.isxander.ultralightfabric.listeners.ViewLoadListener
+import dev.isxander.ultralightfabric.pages.Page
+import dev.isxander.ultralightfabric.renderer.ViewRenderer
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 
 open class View(val layer: RenderLayer, private val viewRenderer: ViewRenderer) {
-
     val ultralightView = ThreadLock<UltralightView>()
 
     val context: UltralightJsContext
@@ -54,7 +60,7 @@ open class View(val layer: RenderLayer, private val viewRenderer: ViewRenderer) 
      */
     fun loadPage(page: Page) {
         // Unregister listeners
-        context.events._unregisterEvents()
+        eventBus.unregisterAll { it is EventListenerJs }
 
         if (viewingPage != page && viewingPage != null) {
             page.close()
@@ -70,7 +76,7 @@ open class View(val layer: RenderLayer, private val viewRenderer: ViewRenderer) 
      */
     fun loadUrl(url: String) {
         // Unregister listeners
-        context.events._unregisterEvents()
+        eventBus.unregisterAll { it is EventListenerJs }
 
         ultralightView.get().loadURL(url)
         logger.debug("Successfully loaded page $url")
@@ -129,7 +135,7 @@ open class View(val layer: RenderLayer, private val viewRenderer: ViewRenderer) 
         ultralightView.get().stop()
         viewingPage?.close()
         viewRenderer.delete()
-        context.events._unregisterEvents()
+        eventBus.unregisterAll { it is EventListenerJs }
     }
 
     fun focus() {
@@ -154,5 +160,5 @@ open class View(val layer: RenderLayer, private val viewRenderer: ViewRenderer) 
 
 }
 
-class ScreenView(viewRenderer: ViewRenderer, val screen: Screen, val adaptedScreen: Screen?, val parentScreen: Screen?) :
+class ScreenView(viewRenderer: ViewRenderer, val screen: Screen, val parentScreen: Screen?) :
     View(RenderLayer.SCREEN_LAYER, viewRenderer)

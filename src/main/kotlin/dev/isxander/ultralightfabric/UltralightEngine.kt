@@ -14,9 +14,17 @@ import com.labymedia.ultralight.config.FontHinting
 import com.labymedia.ultralight.config.UltralightConfig
 import com.labymedia.ultralight.gpu.UltralightGPUDriverNativeUtil
 import com.labymedia.ultralight.plugin.logging.UltralightLogLevel
+import dev.isxander.evergreenhud.event.eventBus
+import dev.isxander.ultralightfabric.filesystem.BrowserFileSystem
+import dev.isxander.ultralightfabric.glfw.GlfwClipboardAdapter
+import dev.isxander.ultralightfabric.glfw.GlfwCursorAdapter
+import dev.isxander.ultralightfabric.glfw.GlfwInputAdapter
 import dev.isxander.ultralightfabric.utils.ThreadLock
-import dev.isxander.utils.logger
-import dev.isxander.utils.mc
+import dev.isxander.evergreenhud.utils.logger
+import dev.isxander.evergreenhud.utils.mc
+import dev.isxander.ultralightfabric.hooks.UltralightIntegrationHook
+import dev.isxander.ultralightfabric.pages.PageManager
+import dev.isxander.ultralightfabric.renderer.CpuViewRenderer
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 
@@ -79,6 +87,7 @@ object UltralightEngine {
             UltralightConfig()
                 .animationTimerDelay(1.0 / refreshRate)
                 .scrollTimerDelay(1.0 / refreshRate)
+                .resourcePath(resources.cacheRoot.absolutePath)
                 .cachePath(resources.cacheRoot.absolutePath)
                 .fontHinting(FontHinting.SMOOTH)
         )
@@ -99,13 +108,15 @@ object UltralightEngine {
         renderer.lock(UltralightRenderer.create())
 
         // Setup hooks
-        UltralightIntegrationHook
-        UltralightScreenHook
+        eventBus.register(UltralightIntegrationHook)
 
         // Setup GLFW adapters
         clipboardAdapter = GlfwClipboardAdapter()
         cursorAdapter = GlfwCursorAdapter()
         inputAdapter = GlfwInputAdapter()
+
+        logger.debug("Loading pages...")
+        PageManager.registerModPages()
 
         logger.info("Successfully loaded ultralight!")
     }
@@ -138,8 +149,8 @@ object UltralightEngine {
     fun newOverlayView() =
         View(RenderLayer.OVERLAY_LAYER, newViewRenderer()).also { views += it }
 
-    fun newScreenView(screen: Screen, adaptedScreen: Screen? = null, parentScreen: Screen? = null) =
-        ScreenView(newViewRenderer(), screen, adaptedScreen, parentScreen).also { views += it }
+    fun newScreenView(screen: Screen, parentScreen: Screen? = mc.currentScreen) =
+        ScreenView(newViewRenderer(), screen, parentScreen).also { views += it }
 
     fun removeView(view: View) {
         view.free()

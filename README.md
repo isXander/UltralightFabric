@@ -13,7 +13,7 @@ The best Fabric template using kotlin.
         * `version`
     * `src/main/resources/fabric.mod.json`
         * basically everything in there
-    * `LICENSE`
+    * `LICENSE.md`
         * I recommend you use the [LGPL 2.1](https://www.gnu.org/licenses/lgpl-2.1.html) license
     * `README.md`
         * Can't forget this! It's what your reading now!
