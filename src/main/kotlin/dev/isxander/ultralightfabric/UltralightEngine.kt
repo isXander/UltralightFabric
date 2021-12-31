@@ -29,7 +29,6 @@ import net.minecraft.client.gui.screen.Screen
 import net.minecraft.client.util.math.MatrixStack
 
 object UltralightEngine {
-
     /**
      * Ultralight window
      *

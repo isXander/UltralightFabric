@@ -101,16 +101,16 @@ class UltralightJsContext(view: View, ulView: ThreadLock<UltralightView>) {
             }
         }
 
-        SetupContextCallback.EVENT.invoker().setupContext(globalObject, databind)
+        SetupContextCallback.EVENT.invoker().setupContext(context, globalObject, databind)
     }
 
     fun interface SetupContextCallback {
-        fun setupContext(context: JavascriptObject, databind: Databind): ActionResult
+        fun setupContext(context: JavascriptContext, globalObject: JavascriptObject, databind: Databind): ActionResult
 
         companion object {
-            val EVENT = EventFactory.createArrayBacked(SetupContextCallback::class.java) { listeners -> SetupContextCallback { context, databind ->
+            val EVENT = EventFactory.createArrayBacked(SetupContextCallback::class.java) { listeners -> SetupContextCallback { context, globalObject, databind ->
                 for (listener in listeners) {
-                    val result = listener.setupContext(context, databind)
+                    val result = listener.setupContext(context, globalObject, databind)
 
                     if (result != ActionResult.SUCCESS) {
                         return@SetupContextCallback result

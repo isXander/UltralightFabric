@@ -15,6 +15,7 @@
   },
   "license": "GPL 3.0",
   "environment": "client",
+  "icon": "assets/ultralightfabric/icon.png",
   "entrypoints": {
   },
   "mixins": [
