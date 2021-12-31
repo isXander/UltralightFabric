@@ -108,6 +108,7 @@ class UltralightJsContext(view: View, ulView: ThreadLock<UltralightView>) {
         fun setupContext(context: JavascriptContext, globalObject: JavascriptObject, databind: Databind): ActionResult
 
         companion object {
+            @JvmStatic
             val EVENT = EventFactory.createArrayBacked(SetupContextCallback::class.java) { listeners -> SetupContextCallback { context, globalObject, databind ->
                 for (listener in listeners) {
                     val result = listener.setupContext(context, globalObject, databind)
