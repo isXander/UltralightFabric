@@ -1,28 +1,10 @@
-# Xander's Fabric Template for Kotlin
-The best Fabric template using kotlin.
+# UltralightFabric
+UltralightFabric is an implementation of Ultralight for Fabric.
+This implementation was not a work of my own but of a project called [LiquidBounce](https://github.com/CCBlueX/LiquidBounce) which is unfortunately a hacked client. It has been adapted into a library that everyone is free to use.
 
-## Usage
-**Mod Development**:
-* Please read the [Fabric Wiki](https://fabricmc.net/wiki) for general mod development help.
+## Developing
+**Developers:** For information about using UltralightFabric in your own mod, [consult the wiki](https://github.com/isXander/UltralightFabric/wiki/Using-UltralightFabric)
 
-**Using the template**
-* Click the big green `Use this template` button to clone the template to your GitHub.
-* Replace relevant information in the files
-    * `build.gradle.kts`
-        * `group`
-        * `version`
-    * `src/main/resources/fabric.mod.json`
-        * basically everything in there
-    * `LICENSE.md`
-        * I recommend you use the [LGPL 2.1](https://www.gnu.org/licenses/lgpl-2.1.html) license
-    * `README.md`
-        * Can't forget this! It's what your reading now!
-* Once set up in your IDE of choice, you will probably want to run your mod. Here are a few options
-    * You can use `gradlew run` to run from the command line.
-    * You can create a run configuration in your IDE with the gradle commands `run`.
-    * Use the automatically populated run configuration that fabric-loom generated for you. (sometimes this doesn't work)
-    * Run in a production environment by building a jar with `gradlew build`.
-
-## License
-* This template is licensed under [The Unlicense](https://unlicense.org/) in an attempt to gift this project to the public domain.
-  (you can use this however you want)
+## Requirements
+<p><a title="Fabric API" href="https://www.curseforge.com/minecraft/mc-mods/fabric-api" target="_blank" rel="noopener noreferrer"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.imgur.com/Ol1Tcf8.png" alt="" width="171" height="50" /></a></p>
+<p><a title="Fabric Language Kotlin" href="https://minecraft.curseforge.com/projects/fabric-language-kotlin" target="_blank" rel="noopener noreferrer"><img style="display: block; margin-left: auto; margin-right: auto;" src="https://i.imgur.com/c1DH9VL.png" alt="" width="171" height="50" /></a></p>
