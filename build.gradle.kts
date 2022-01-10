@@ -3,10 +3,11 @@ plugins {
 
     kotlin("jvm") version kotlinVersion
     id("fabric-loom") version "0.10.+"
+    `java-library`
 }
 
 group = "dev.isxander"
-version = "1.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -16,6 +17,11 @@ repositories {
 fun DependencyHandlerScope.includeImplementation(dependency: Any) {
     include(dependency)
     implementation(dependency)
+}
+
+fun DependencyHandlerScope.includeApi(dependency: Any) {
+    include(dependency)
+    api(dependency)
 }
 
 dependencies {
@@ -38,8 +44,8 @@ dependencies {
     includeImplementation("com.labymedia:ultralight-java-databind:0.4.6")
     includeImplementation("com.labymedia:ultralight-java-gpu:0.4.6")
 
-    includeImplementation("io.ktor:ktor-client-core:2.0-eap-289")
-    includeImplementation("io.ktor:ktor-client-apache:2.0-eap-289")
+    includeApi("io.ktor:ktor-client-core:2.0-eap-289")
+    includeApi("io.ktor:ktor-client-apache:2.0-eap-289")
 }
 
 kotlin {
