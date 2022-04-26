@@ -45,7 +45,7 @@ dependencies {
     includeImplementation("com.labymedia:ultralight-java-gpu:0.4.6")
 
     includeApi("io.ktor:ktor-client-core:2.0-eap-289")
-    includeApi("io.ktor:ktor-client-apache:2.0-eap-289")
+    includeApi("io.ktor:ktor-client-apache:2.0.1-eap-377")
 }
 
 kotlin {
