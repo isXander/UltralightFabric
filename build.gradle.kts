@@ -42,7 +42,7 @@ dependencies {
 
     includeImplementation("com.labymedia:ultralight-java-base:0.4.6")
     includeImplementation("com.labymedia:ultralight-java-databind:0.4.6")
-    includeImplementation("com.labymedia:ultralight-java-gpu:0.4.6")
+    includeImplementation("com.labymedia:ultralight-java-gpu:0.4.12")
 
     includeApi("io.ktor:ktor-client-core:2.0-eap-289")
     includeApi("io.ktor:ktor-client-apache:2.0-eap-289")
